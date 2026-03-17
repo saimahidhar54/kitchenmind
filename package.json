@@ -1,0 +1,18 @@
+{
+  "name": "kitchenmind",
+  "version": "1.0.0",
+  "description": "Smart Inventory Management & Zero-Waste Recipe Engine",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.0.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "cors": "^2.8.5"
+  },
+  "author": "Sai Mahidhar & Shaik Jani Begum",
+  "license": "MIT"
+}

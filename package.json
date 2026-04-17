@@ -11,7 +11,11 @@
     "better-sqlite3": "^11.0.0",
     "ejs": "^3.1.10",
     "express": "^4.21.0",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "bcryptjs": "^2.4.3",
+    "express-session": "^1.18.0",
+    "connect-flash": "^0.1.1",
+    "express-validator": "^7.0.1"
   },
   "author": "Sai Mahidhar & Shaik Jani Begum",
   "license": "MIT"

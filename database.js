@@ -16,46 +16,102 @@ function getDb() {
 }
 
 function initSchema() {
+  // Users table
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      username TEXT UNIQUE NOT NULL,
+      email TEXT UNIQUE NOT NULL,
+      password TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+
+  // User profiles table
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS user_profiles (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER UNIQUE NOT NULL,
+      daily_calories INTEGER DEFAULT 2000,
+      daily_protein INTEGER DEFAULT 50,
+      daily_carbs INTEGER DEFAULT 250,
+      daily_fat INTEGER DEFAULT 70,
+      serving_size INTEGER DEFAULT 1,
+      allergies TEXT DEFAULT '',
+      dietary_preference TEXT DEFAULT '',
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    );
+  `);
+
+  // Ingredients table (now user-specific)
   db.exec(`
     CREATE TABLE IF NOT EXISTS ingredients (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
       name TEXT NOT NULL,
       quantity REAL NOT NULL DEFAULT 1,
       unit TEXT NOT NULL DEFAULT 'pcs',
       category TEXT NOT NULL DEFAULT 'Other',
       expiry_date TEXT NOT NULL,
       added_date TEXT NOT NULL DEFAULT (date('now')),
-      notes TEXT DEFAULT ''
+      notes TEXT DEFAULT '',
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     );
   `);
 
-  // Seed some sample data if table is empty
-  const count = db.prepare('SELECT COUNT(*) as cnt FROM ingredients').get();
-  if (count.cnt === 0) {
-    const insert = db.prepare(`
-      INSERT INTO ingredients (name, quantity, unit, category, expiry_date, notes)
-      VALUES (@name, @quantity, @unit, @category, @expiry_date, @notes)
-    `);
+  db.exec(`
+  CREATE TABLE IF NOT EXISTS recipes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    title TEXT,
+    ingredients TEXT,
+    instructions TEXT,
+    calories REAL,
+    protein REAL,
+    carbs REAL,
+    fat REAL,
+    fiber REAL,
+    servings INTEGER DEFAULT 1,
+    allergens TEXT DEFAULT '',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+  );
 
-    const today = new Date();
-    const samples = [
-      { name: 'Milk', quantity: 1, unit: 'litre', category: 'Dairy', expiry_date: addDays(today, 2), notes: 'Full cream' },
-      { name: 'Tomatoes', quantity: 6, unit: 'pcs', category: 'Vegetables', expiry_date: addDays(today, 1), notes: '' },
-      { name: 'Chicken Breast', quantity: 500, unit: 'grams', category: 'Meat', expiry_date: addDays(today, 3), notes: 'Boneless' },
-      { name: 'Rice', quantity: 2, unit: 'kg', category: 'Grains', expiry_date: addDays(today, 60), notes: 'Basmati' },
-      { name: 'Eggs', quantity: 12, unit: 'pcs', category: 'Dairy', expiry_date: addDays(today, 5), notes: '' },
-      { name: 'Spinach', quantity: 250, unit: 'grams', category: 'Vegetables', expiry_date: addDays(today, 0), notes: 'Fresh bundle' },
-      { name: 'Yogurt', quantity: 2, unit: 'cups', category: 'Dairy', expiry_date: addDays(today, 4), notes: 'Plain' },
-      { name: 'Onions', quantity: 5, unit: 'pcs', category: 'Vegetables', expiry_date: addDays(today, 14), notes: '' },
-      { name: 'Bread', quantity: 1, unit: 'loaf', category: 'Bakery', expiry_date: addDays(today, 1), notes: 'Whole wheat' },
-      { name: 'Butter', quantity: 200, unit: 'grams', category: 'Dairy', expiry_date: addDays(today, 10), notes: 'Salted' },
-    ];
+  CREATE TABLE IF NOT EXISTS nutrition_log (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    recipe_id INTEGER,
+    date DATE DEFAULT (date('now')),
+    servings REAL DEFAULT 1,
+    FOREIGN KEY (recipe_id) REFERENCES recipes(id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+  );
 
-    const insertMany = db.transaction((items) => {
-      for (const item of items) insert.run(item);
-    });
-    insertMany(samples);
-  }
+  CREATE TABLE IF NOT EXISTS meal_plans (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    recipe_id INTEGER NOT NULL,
+    meal_date DATE NOT NULL,
+    meal_type TEXT NOT NULL,
+    servings INTEGER DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
+  );
+
+  CREATE TABLE IF NOT EXISTS shopping_lists (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    ingredient_name TEXT NOT NULL,
+    quantity REAL NOT NULL,
+    unit TEXT NOT NULL,
+    checked INTEGER DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+  );
+`);
+
+  // Note: Sample data seeding removed - users will add their own ingredients after registration
 }
 
 function addDays(date, days) {

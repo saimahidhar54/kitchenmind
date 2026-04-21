@@ -1,10 +1,10 @@
-# 🍳 KitchenMind - Smart Kitchen Management System
+#  KitchenMind - Smart Kitchen Management System
 
 **A comprehensive web application for intelligent kitchen inventory management, personalized meal planning, and zero-waste cooking.**
 
 ---
 
-## 👥 Project Team
+##  Project Team
 
 - **Sai Mahidhar** (25MCMT29)
 - **Shaik Jani Begum** (25MCMT09)
@@ -15,7 +15,7 @@
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Features](#features)
 - [Technology Stack](#technology-stack)
@@ -31,54 +31,54 @@
 
 ---
 
-## ✨ Features
+##  Features
 
-### 🔐 User Authentication
+###  User Authentication
 - Secure registration and login system
 - Password hashing with bcrypt
 - Session-based authentication
 - User-specific data isolation
 
-### 📦 Inventory Management
+###  Inventory Management
 - Add, edit, and delete ingredients
 - Track quantities and expiry dates
 - Categorize ingredients (Dairy, Vegetables, Meat, etc.)
 - Search and filter functionality
 - Expiry alerts ("Rescue My Food" feature)
 
-### 👤 User Profiles
+###  User Profiles
 - Personalized nutritional goals (calories, protein, carbs, fat)
 - Allergy tracking
 - Dietary preferences (Vegetarian, Vegan, Keto, etc.)
 - Serving size customization (number of people cooking for)
 
-### 🍽️ Recipe Management
+###  Recipe Management
 - Browse recipes from TheMealDB API
 - Filter recipes based on allergies
 - Filter by dietary preferences
 - Scale recipes to serving size
 - Save favorite recipes
 
-### 📅 Meal Planning
+###  Meal Planning
 - Schedule meals by date and type (breakfast, lunch, dinner, snack)
 - View meal plans in calendar format
 - Track planned nutrition
 
-### 🛒 Smart Shopping Lists
+###  Smart Shopping Lists
 - Auto-generate shopping lists from meal plans
 - Manual item addition
 - Check off purchased items
 - Aggregate duplicate items
 - Clear completed items
 
-### 📊 Nutrition Tracking
+###  Nutrition Tracking
 - Log consumed meals
 - View daily nutrition summaries
 - Track progress toward goals
 
 ---
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 ### Backend
 - **Runtime:** Node.js
@@ -98,7 +98,7 @@
 
 ---
 
-## 📥 Installation
+##  Installation
 
 ### Prerequisites
 - Node.js (v14 or higher)
@@ -130,7 +130,7 @@
 
 ---
 
-## 🚀 Usage
+##  Usage
 
 ### First Time Setup
 
@@ -176,55 +176,8 @@
 
 ---
 
-## 📁 Project Structure
 
-```
-kitchenmind/
-├── database.js              # Database initialization and schema
-├── server.js                # Main Express server
-├── package.json             # Dependencies and scripts
-├── README.md                # This file
-│
-├── middleware/
-│   └── auth.js              # Authentication middleware
-│
-├── routes/
-│   ├── auth.js              # Authentication routes (login, register, logout)
-│   ├── profile.js           # User profile routes
-│   ├── recipes.js           # Recipe management routes
-│   ├── mealplan.js          # Meal planning routes
-│   └── shopping.js          # Shopping list routes
-│
-├── views/
-│   ├── landing.ejs          # Landing page
-│   ├── dashboard.ejs        # Main dashboard (ingredient management)
-│   ├── auth/
-│   │   ├── login.ejs        # Login page
-│   │   └── register.ejs     # Registration page
-│   ├── profile/
-│   │   └── view.ejs         # Profile view/edit page
-│   └── nutrition-dashboard.ejs  # Nutrition tracking (future)
-│
-├── public/
-│   ├── css/
-│   │   └── style.css        # Custom styles
-│   └── js/
-│       └── app.js           # Client-side JavaScript
-│
-├── utils/
-│   └── nutrition.js         # Nutrition calculation utilities
-│
-└── docs/
-    ├── SRS_OOAD.md          # SRS from OOAD perspective
-    ├── SRS_SSAD.md          # SRS from SSAD perspective
-    ├── product_backlog.md   # Agile product backlog
-    ├── user_stories.md      # User stories
-    └── use_case_manage_ingredients.md  # Use case documentation
-```
-
----
-
-## 📡 API Documentation
+##  API Documentation
 
 ### Authentication Endpoints
 
@@ -554,7 +507,7 @@ Add item to shopping list.
 
 ---
 
-## 🗄️ Database Schema
+##  Database Schema
 
 ### Tables
 
@@ -625,7 +578,7 @@ Add item to shopping list.
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 *(Add screenshots of your application here)*
 
@@ -638,7 +591,7 @@ Add item to shopping list.
 
 ---
 
-## 📚 Documentation
+##  Documentation
 
 Comprehensive documentation is available in the `docs/` folder:
 
@@ -650,7 +603,7 @@ Comprehensive documentation is available in the `docs/` folder:
 
 ---
 
-## 🔮 Future Enhancements
+##  Future Enhancements
 
 1. **AI-Powered Recipe Generation**
    - Integration with Claude/GPT for custom recipe creation
@@ -683,13 +636,13 @@ Comprehensive documentation is available in the `docs/` folder:
 
 ---
 
-## 📄 License
+##  License
 
 This project is developed as part of an academic course and is intended for educational purposes.
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **TheMealDB API** for providing free recipe data
 - **Bootstrap** for the UI framework
@@ -698,13 +651,13 @@ This project is developed as part of an academic course and is intended for educ
 
 ---
 
-## 📞 Contact
+##  Contact
 
 For questions or feedback, please contact:
 
 - **Sai Mahidhar** - [GitHub](https://github.com/saimahidhar54)
-- **Shaik Jani Begum** - [Your GitHub/Email]
+- **Shaik Jani Begum** - [GitHub] (https://github.com/Jani-Begum05)
 
 ---
 
-**Made with ❤️ for Software Engineering Lab 2025-26**
+**Made with for Software Engineering Lab 2025-26**

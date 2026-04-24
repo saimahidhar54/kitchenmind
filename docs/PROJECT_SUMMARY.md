@@ -9,13 +9,13 @@
 
 ---
 
-## 📌 Executive Summary
+##  Executive Summary
 
 KitchenMind is a comprehensive web-based kitchen management system designed to reduce food waste, simplify meal planning, and provide personalized nutrition tracking. The application combines intelligent inventory management with user-specific dietary preferences to create a seamless cooking experience.
 
 ---
 
-## 🎯 Project Objectives
+##  Project Objectives
 
 1. **Reduce Food Waste**: Track ingredient expiry dates and alert users before items spoil
 2. **Personalized Experience**: Tailor recipe recommendations based on user allergies, dietary preferences, and nutritional goals
@@ -25,13 +25,13 @@ KitchenMind is a comprehensive web-based kitchen management system designed to r
 
 ---
 
-## 🌟 Key Features Implemented
+##  Key Features Implemented
 
 ### Phase 1: Core Functionality
 ✅ User authentication (register, login, logout)  
-✅ Secure password hashing with bcrypt  
-✅ Session-based authorization  
-✅ User-specific data isolation  
+ Secure password hashing with bcrypt  
+ Session-based authorization  
+ User-specific data isolation  
 
 ### Phase 2: Inventory Management
 ✅ CRUD operations for ingredients  

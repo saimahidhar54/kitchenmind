@@ -89,6 +89,25 @@ body {
 
 /* ─── NAVBAR ─────────────────────────────────────────────── */
 
+.navbar-nav .nav-link {
+  color: var(--text-primary) !important;
+  opacity: 1 !important;
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 8px 16px !important;
+  border-radius: var(--radius-sm);
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--accent) !important;
+  background: rgba(6, 214, 160, 0.1);
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--accent) !important;
+  background: rgba(6, 214, 160, 0.15);
+}
+
 .brand-icon {
   font-size: 1.8rem;
   filter: drop-shadow(0 0 8px rgba(6, 214, 160, 0.4));
@@ -350,7 +369,7 @@ body {
 .ingredient-actions {
   display: flex;
   gap: 6px;
-  opacity: 0;
+  opacity: 1;
   transition: var(--transition);
 }
 
@@ -490,7 +509,7 @@ body {
   color: var(--text-primary);
   border-radius: var(--radius-sm);
   padding: 10px 14px;
-  transition: var(--transition);
+  /* transition: var(--transition); */
 }
 
 .form-control:focus, .form-select:focus {
@@ -498,6 +517,48 @@ body {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-glow);
   color: var(--text-primary);
+}
+
+.form-select option {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  opacity: 1 !important;
+  padding: 8px 12px;
+}
+
+.form-select option:hover,
+.form-select option:focus,
+.form-select option:checked {
+  background: var(--accent) !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+/* Fix for Bootstrap select dropdown */
+.dropdown-menu {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+.dropdown-item {
+  color: var(--text-primary) !important;
+  opacity: 1 !important;
+  padding: 8px 16px !important;
+  transition: var(--transition);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: var(--accent) !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.dropdown-item.active {
+  background: var(--accent) !important;
+  color: #fff !important;
+  opacity: 1 !important;
 }
 
 .form-label {
@@ -558,6 +619,10 @@ body {
 
   .ingredient-actions {
     opacity: 1;
+  }
+
+  .navbar-nav .nav-link {
+    opacity: 1 !important;
   }
 }
 
